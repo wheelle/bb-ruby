@@ -6,6 +6,12 @@ module BBRuby
   # built-in BBCode tabs that will be processed
   @@tags = {
     # tag name => [regex, replace, description, example, enable/disable symbol]
+    'Center' => [
+      /\[center(:.*)?\](.*?)\[\/center\1?\]/mi,
+      '<center>\2</center>', #Proc alternative for example: lambda{ |e| "<center>#{e[2]}</center>" }
+      'Center text',
+      'Look [center]here[/center]',
+      :center],
     'Bold' => [
       /\[b(:.*)?\](.*?)\[\/b\1?\]/mi,
       '<strong>\2</strong>', #Proc alternative for example: lambda{ |e| "<strong>#{e[2]}</strong>" }
