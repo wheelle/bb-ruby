@@ -127,8 +127,8 @@ module BBRuby
       '[dd]my definition[/dd',
       :definition],
     'Quote' => [
-      /\[quote(.*)?=(?:&quot;)?(.*?)(?:&quot;)?\](.*?)\[\/quote\1?\]/mi,
-      '<fieldset><legend>\2</legend><blockquote>\3</blockquote></fieldset>',
+      /\[quote author?=(.*?) link?=(.*?) date?=(.*?)\](.*?)\[\/quote\1?\]/mi,
+      '<fieldset><a href="http://nashprigorod.ru/index.php?&\2">Цитата: \1 от \3</a><blockquote>\4</blockquote></fieldset>',
       'Quote with citation',
       "[quote=mike]Now is the time...[/quote]",
       :quote],
