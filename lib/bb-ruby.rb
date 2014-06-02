@@ -121,7 +121,7 @@ module BBRuby
       '[dd]my definition[/dd',
       :definition],
     'Quote' => [
-      /\[quote(:.*)?=(?:&quot;)?(.*?)(?:&quot;)?\](.*?)\[\/quote\1?\]/mi,
+      /\[quote(.*)?=(?:&quot;)?(.*?)(?:&quot;)?\](.*?)\[\/quote\1?\]/mi,
       '<fieldset><legend>\2</legend><blockquote>\3</blockquote></fieldset>',
       'Quote with citation',
       "[quote=mike]Now is the time...[/quote]",
