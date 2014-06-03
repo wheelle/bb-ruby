@@ -129,7 +129,7 @@ module BBRuby
       :definition],
     'Quote' => [
       /\[quote author?=(.*?) link?=(.*?) date?=(.*?)\](.*?)\[\/quote\1?\]/mi,
-      '<fieldset><a href="http://nashprigorod.ru/index.php?&\2">Цитата: \1 от \3</a><blockquote>\4</blockquote></fieldset>',
+      lambda{ |e| "<fieldset><a href='http://nashprigorod.ru/index.php?&#{e[2]}'>Цитата: #{e[1]} от #{Date.strptime(e[3],'%s')}</a><blockquote>\4</blockquote></fieldset>" },
       'Quote with citation',
       "[quote=mike]Now is the time...[/quote]",
       :quote],
@@ -319,17 +319,7 @@ module BBRuby
     end
 
     def gsub!(text, pattern, replacement)
-      date = false
-      begin
-        date = Date.strptime(replacement,'%s')
-      rescue ArgumentError
-        # handle invalid date
-      end
-      puts replacement.inspect
-      if date
-        replacement = date
-        while text.gsub!( pattern, replacement ); end
-      elsif replacement.class == String
+      if replacement.class == String
         # just replace if replacement is String
         while text.gsub!( pattern, replacement ); end
       else
