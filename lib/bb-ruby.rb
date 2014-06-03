@@ -1,4 +1,5 @@
 module BBRuby
+  require 'date'
   # allowable image formats
   @@imageformats = 'png|bmp|jpg|gif|jpeg'
   @@quote_matcher = '(&quot;|&apos;|)'
@@ -318,7 +319,15 @@ module BBRuby
     end
 
     def gsub!(text, pattern, replacement)
-      if replacement.class == String
+      begin
+        date = Date.strptime(replacement,'%s')
+      rescue ArgumentError
+        # handle invalid date
+      end
+      if date
+        replacement = date
+        while text.gsub!( pattern, replacement ); end
+      elsif replacement.class == String
         # just replace if replacement is String
         while text.gsub!( pattern, replacement ); end
       else
