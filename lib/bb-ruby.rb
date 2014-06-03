@@ -319,6 +319,7 @@ module BBRuby
     end
 
     def gsub!(text, pattern, replacement)
+      date = false
       begin
         date = Date.strptime(replacement,'%s')
       rescue ArgumentError
