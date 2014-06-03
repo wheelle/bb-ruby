@@ -129,7 +129,7 @@ module BBRuby
       :definition],
     'Quote' => [
       /\[quote author?=(.*?) link?=(.*?) date?=(.*?)\](.*?)\[\/quote\1?\]/mi,
-      lambda{ |e| "<fieldset><a href='http://nashprigorod.ru/index.php?&#{e[2]}'>Цитата: #{e[1]} от #{Time.at(e[3].to_i).strftime('%e.%B.%Y %k:%M')}</a><blockquote>\4</blockquote></fieldset>" },
+      lambda{ |e| "<fieldset><a href='http://nashprigorod.ru/index.php?&#{e[2]}'>Цитата: #{e[1]} от #{I18n.l(Time.at(e[3].to_i), format: '%e %B %Y %k:%M')}</a><blockquote>\4</blockquote></fieldset>" },
       'Quote with citation',
       "[quote=mike]Now is the time...[/quote]",
       :quote],
