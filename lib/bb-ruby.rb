@@ -325,6 +325,7 @@ module BBRuby
       rescue ArgumentError
         # handle invalid date
       end
+      puts replacement.inspect
       if date
         replacement = date
         while text.gsub!( pattern, replacement ); end
