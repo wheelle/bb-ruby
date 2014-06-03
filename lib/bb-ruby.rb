@@ -181,6 +181,18 @@ module BBRuby
       'Display an image',
       'Check out this crazy cat: [img]http://catsweekly.com/crazycat.jpg[/img]',
       :image],
+    'Image simple' => [
+      /\[img\](.*?)\[\/img\1?\]/im,
+      '<img src="\1" alt="" />',
+      'Display an image',
+      'Check out this crazy cat: [img]http://catsweekly.com/crazycat.jpg[/img]',
+      :image],
+    'Image custom' => [
+      /\[img width=(.*?) height=(.*?)\](.*?)\[\/img\1?\]/im,
+      '<img width="\1" height="\2" src="\3" alt="" />',
+      'Display an image',
+      'Check out this crazy cat: [img]http://catsweekly.com/crazycat.jpg[/img]',
+      :image],
     'YouTube' => [
       /\[youtube\](.*?)\?v=([\w\d\-]+).*\[\/youtube\]/im,
       # '<object width="400" height="330"><param name="movie" value="http://www.youtube.com/v/\2"></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/v/\2" type="application/x-shockwave-flash" wmode="transparent" width="400" height="330"></embed></object>',
